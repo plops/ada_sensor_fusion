@@ -85,7 +85,7 @@ You must complete, format (`gnatformat`), compile, and prove each step before mo
   end HTTP_Handler;
   ```
 
-### Step 2: Single-Device Sensor Fusion
+### Step 2: Single-Device Sensor Fusion ✅ **COMPLETED**
 * **Goal:** Implement the core orientation filter (Accelerometer + Gyroscope + Magnetometer).
 * **Task:** Write a SPARK-verified Quaternion filter. 
 * **Prototype Code (SPARK Quaternion & Contracts):**

@@ -1,0 +1,159 @@
+V "GNAT Lib v14"
+A -gnat2012
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U math_library%b	math_library.adb	ce87a711 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+
+U math_library%s	math_library.ads	541c4be4 EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+
+D ada.ads		20260213223206 76789da1 ada%s
+D a-numeri.ads		20260213223206 84bea7a3 ada.numerics%s
+D a-nuelfu.ads		20260213223206 03e83d1c ada.numerics.elementary_functions%s
+D a-ngelfu.ads		20260213223206 5506716e ada.numerics.generic_elementary_functions%s
+D a-unccon.ads		20260213223206 0e9b276f ada.unchecked_conversion%s
+D math_library.ads	20260327233053 57f476f8 math_library%s
+D math_library.adb	20260327232928 9a9becf5 math_library%b
+D system.ads		20260213223207 14286b0f system%s
+D s-exctab.ads		20260213223207 91bef6ef system.exception_table%s
+D s-stalib.ads		20260213223207 1c9580f6 system.standard_library%s
+G a e
+G c Z s s [quaternionIP math_library 14 9 none]
+G c Z s b [magnitude_squared math_library 37 13 none]
+G c Z s b [magnitude math_library 41 13 none]
+G c Z s b [normalize math_library 47 13 none]
+G c Z s b [conjugate math_library 53 13 none]
+G c Z s b [multiply math_library 56 13 none]
+G c Z s b [to_rotation_matrix math_library 59 13 none]
+G c Z s b [rotate_vector math_library 62 13 none]
+G c Z s b [update_madgwick math_library 67 13 none]
+G c Z s b [compute_accel_gradient math_library 80 13 none]
+G c Z s b [compute_mag_gradient math_library 85 13 none]
+G c Z s b [nanoseconds_to_seconds math_library 92 13 none]
+G c Z s b [compute_delta_time math_library 96 13 none]
+G c Z s b [safe_sqrt math_library 103 13 none]
+G c Z s b [safe_divide math_library 108 13 none]
+G c Z s s [vector_3dIP math_library 22 9 none]
+G c Z s s [Tmatrix_3x3BIP math_library 29 4 none]
+X 1 ada.ads
+16K9*Ada 20e8 6|6r6 7|6r6 177r17
+X 2 a-numeri.ads
+16K13*Numerics 35e17 6|6r10 7|6r10 177r21
+X 3 a-nuelfu.ads
+18K22*Elementary_Functions[4|39] 6|6w19 7|6w19 177r30
+X 4 a-ngelfu.ads
+53V13*Sqrt{float} 7|177s51[3|18]
+X 6 math_library.ads
+8K9*Math_Library 111l5 111e17 7|8b14 191l5 191t17
+11f4*Epsilon{float} 49r39 50r67 63r42 74r45 75r61 109r32 7|184r24
+14R9*Quaternion 19e14 32r35 37r36 41r28 47r28 47r47 53r28 53r47 56r32 56r51
+. 59r37 62r47 68r19 71r33 81r11 82r33 86r11 87r31 7|11r36 17r28 23r28 23r47
+. 31r28 31r47 37r32 37r51 48r37 64r47 66r22 67r25 68r27 75r19 78r33 88r27
+. 91r25 92r24 95r25 108r11 109r33 147r11 148r31
+15f7*W{float} 7|13r16 13r22 27r17 33r17 40r12 40r19 41r12 41r33 42r12 42r47
+. 43r12 43r61 52r47 53r47 54r47 56r47 57r47 58r47 96r20 96r30 96r48 130r24
+. 133r24
+16f7*X{float} 7|13r28 13r34 27r32 33r23 40r26 40r33 41r19 41r26 42r26 42r61
+. 43r26 43r47 52r29 53r29 54r29 55r35 55r41 56r41 57r29 58r41 59r35 59r41
+. 70r24 97r20 97r30 97r48 128r23 134r23
+17f7*Y{float} 7|13r40 13r46 27r47 33r29 40r40 40r47 41r40 41r61 42r19 42r40
+. 43r33 43r40 51r35 51r41 52r35 53r41 54r35 56r29 57r41 58r29 59r47 59r53
+. 70r36 98r20 98r30 98r48 124r23
+18f7*Z{float} 7|13r52 13r58 27r62 33r35 40r54 40r61 41r47 41r54 42r33 42r54
+. 43r19 43r54 51r47 51r53 52r41 53r35 54r41 55r47 55r53 56r35 57r35 58r35
+. 70r48 99r20 99r30 99r48 125r24 129r23
+22R9*Vector_3D 26e14 62r32 62r66 69r19 70r19 82r15 87r13 7|64r32 64r66 76r19
+. 77r19 82r29 109r15 112r20 148r13
+23f7*X{float} 7|66r44 81r55 81r65 83r29 91r50 137r27 137r37 138r27 138r37
+. 139r27 139r37 140r27 140r37
+24f7*Y{float} 7|66r49 81r75 81r85 84r29 91r64 137r52 137r62 138r52 138r62
+. 139r52 139r62 140r52 140r62
+25f7*Z{float} 7|66r54 81r95 81r105 85r29 91r78 138r77 138r87 139r77 139r87
+. 140r77 140r87
+29A9*Matrix_3x3(float)<integer><integer> 59r56 7|48r56
+32r4*Identity_Quaternion{14R9}
+37V13*Magnitude_Squared{float} 37>32 38r19 49s15 50s21 63s18 74s13 75s16
+. 7|11b13 14l8 14t25 19s25 24s34
+37r32 Q{14R9} 7|11b32 13r14 13r20 13r26 13r32 13r38 13r44 13r50 13r56
+41V13*Magnitude{float} 41>24 42r19 7|17b13 20l8 20t17
+41r24 Q{14R9} 7|17b24 19r44
+47V13*Normalize{14R9} 47>24 50r40 7|23b13 28l8 28t17 102s14
+47r24 Q{14R9} 49r34 7|23b24 24r53 27r15 27r30 27r45 27r60
+53V13*Conjugate{14R9} 53>24 7|31b13 34l8 34t17 67s39
+53r24 Q{14R9} 7|31b24 33r15 33r21 33r27 33r33
+56V13*Multiply{14R9} 56>23 56>27 7|37b13 45l8 45t16 68s41 68s51 92s38
+56r23 Q1{14R9} 7|37b23 40r9 40r23 40r37 40r51 41r9 41r23 41r37 41r51 42r9
+. 42r23 42r37 42r51 43r9 43r23 43r37 43r51
+56r27 Q2{14R9} 7|37b27 40r16 40r30 40r44 40r58 41r16 41r30 41r44 41r58 42r16
+. 42r30 42r44 42r58 43r16 43r30 43r44 43r58
+59V13*To_Rotation_Matrix{29A9} 59>33 7|48b13 61l8 61t26
+59r33 Q{14R9} 7|48b33 51r33 51r39 51r45 51r51 52r27 52r33 52r39 52r45 53r27
+. 53r33 53r39 53r45 54r27 54r33 54r39 54r45 55r33 55r39 55r45 55r51 56r27
+. 56r33 56r39 56r45 57r27 57r33 57r39 57r45 58r27 58r33 58r39 58r45 59r33
+. 59r39 59r45 59r51
+62V13*Rotate_Vector{22R9} 62>28 62>43 7|64b13 71l8 71t21 112s33
+62r28 V{22R9} 7|64b28 66r42 66r47 66r52
+62r43 Q{14R9} 63r37 7|64b43 67r50 68r61
+67V13*Update_Madgwick{14R9} 68>7 69>7 70>7 71>7 75r35 7|74b13 103l8 103t23
+68r7 Current_Q{14R9} 74r32 7|75b7 88r65 92r56 96r10 97r10 98r10 99r10
+69r7 Accel{22R9} 7|76b7 81r49 81r59 81r69 81r79 81r89 81r99 83r23 84r23 85r23
+70r7 Gyro{22R9} 7|77b7 91r45 91r59 91r73
+71f7 DT{float} 73r16 73r29 7|78b7 96r34 96r52 97r34 97r52 98r34 98r52 99r34
+. 99r52
+80V13*Compute_Accel_Gradient{14R9} 81>7 82>7 7|88s41 107b13 143l8 143t30
+81r7 Q{14R9} 7|108b7 112r65 124r21 125r22 128r21 129r21 130r22 133r22 134r21
+82r7 Accel{22R9} 7|109b7 137r31 137r56 138r31 138r56 138r81 139r31 139r56
+. 139r81 140r31 140r56 140r81
+85V13*Compute_Mag_Gradient{14R9} 86>7 87>7 7|146b13 154l8 154t28
+86r7 Q{14R9} 7|147b7
+87r7 Mag{22R9} 7|148b7
+92V13*Nanoseconds_To_Seconds{float} 92>37 93r19 7|157b13 160l8 160t30 168s14
+92i37 Ns{long_integer} 7|157b37 159r21
+96V13*Compute_Delta_Time{float} 97>7 97>19 100r16 7|163b13 169l8 169t26
+97i7 Current_Ns{long_integer} 99r15 7|164b7 166r43
+97i19 Previous_Ns{long_integer} 99r29 7|164b19 166r56
+103V13*Safe_Sqrt{float} 103>24 105r19 7|19s14 25s53 81s38 172b13 179l8 179t17
+103f24 X{float} 104r18 7|172b24 174r10 177r57
+108V13*Safe_Divide{float} 108>26 108>31 7|25s35 83s10 84s10 85s10 182b13
+. 189l8 189t19
+108f26 Num{float} 7|182b26 187r17
+108f31 Denom{float} 109r23 7|182b31 184r15 187r23
+X 7 math_library.adb
+24f7 Mag_Sq{float} 25r64
+25f7 Inv_Mag{float} 27r21 27r36 27r51 27r66
+66r7 V_Q{6|14R9} 68r64
+67r7 Q_Conj{6|14R9} 68r70
+68r7 Result_Q{6|14R9} 70r15 70r27 70r39
+81f7 Accel_Norm{float} 83r32 84r32 85r32
+82r7 Accel_Unit{6|22R9} 88r76
+88r7 Gradient{6|14R9} 96r39 97r39 98r39 99r39
+91r7 Gyro_Q{6|14R9} 92r48
+92r7 Q_Dot{6|14R9} 96r24 97r24 98r24 99r24
+95r7 Q_Pred{6|14R9} 102r25
+112r7 F{6|22R9} 137r25 137r50 138r25 138r50 138r75 139r25 139r50 139r75 140r25
+. 140r50 140r75
+115f7 J_11{float} 124m7 138r17
+115f13 J_12{float} 125m7 139r17
+115f19 J_13{float} 126m7 140r17
+116f7 J_21{float} 128m7 137r17 138r42
+116f13 J_22{float} 129m7 139r42
+116f19 J_23{float} 130m7 140r42
+117f7 J_31{float} 132m7 137r42 138r67
+117f13 J_32{float} 133m7 139r67
+117f19 J_33{float} 134m7 140r67
+120f7 Grad_W{float} 137m7 142r15
+120f15 Grad_X{float} 138m7 142r23
+120f23 Grad_Y{float} 139m7 142r31
+120f31 Grad_Z{float} 140m7 142r39
+166i7 Delta_Ns{long_integer} 168r38
+

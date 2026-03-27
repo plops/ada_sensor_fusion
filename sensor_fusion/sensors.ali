@@ -1,0 +1,72 @@
+V "GNAT Lib v14"
+A -gnat2012
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FLOATING_POINT
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLICIT_LOOPS
+
+U sensors%b		sensors.adb		267586af NE OO PK
+
+U sensors%s		sensors.ads		e551aa81 EE NE OO PK
+
+D sensors.ads		20260327232807 e551aa81 sensors%s
+D sensors.adb		20260327232808 c3242c2e sensors%b
+D system.ads		20260213223207 14286b0f system%s
+G a e
+G c Z s b [is_valid_reading sensors 42 13 none]
+G c Z s b [detect_platform sensors 63 13 none]
+G c Z s b [detect_sensor_type sensors 66 13 none]
+G c Z s s [is_nan sensors 71 13 none]
+G c Z s s [vector_3dIP sensors 22 9 none]
+G c Z s s [sensor_recordIP sensors 29 9 none]
+G c Z s s [sensor_record_arrayIP sensors 39 9 none]
+X 1 sensors.ads
+6K9*Sensors 71E13 74l5 74e12 2|5b14 78l5 78t12
+9E9*OS_Type 9e43 32r18 63r63 2|8r63
+9n21*iOS{9E9} 2|12r20
+9n26*Android{9E9} 2|14r20
+9n35*Unknown{9E9} 2|17r14
+12E9*Sensor_Type 13e74 31r21 66r64 2|21r64
+12n25*Accelerometer{12E9} 47r31 2|25r20 61r15
+12n40*Gyroscope{12E9} 51r34 2|27r20 65r15
+12n51*Magnetometer{12E9} 55r34 2|29r20 69r15
+13n25*Orientation{12E9} 2|31r20
+13n38*Location{12E9} 2|33r20
+13n48*Barometer{12E9} 2|35r20
+13n59*Unknown_Sensor{12E9} 2|38r14
+16F12*Acceleration{float} 48r27 49r27 50r27 2|62r33 63r33 64r33
+17F12*Angular_Velocity{float} 52r27 53r27 54r27 2|66r33 67r33 68r33
+18F12*Magnetic_Field{float} 56r27 57r27 58r27 2|70r33 71r33 72r33
+19I12*Timestamp_Nano{long_integer} 30r20 45r27 2|45r30
+22R9*Vector_3D 26e14 35r14
+23f7*X{float} 48r22 52r22 56r22 2|55r25 62r28 66r28 70r28
+24f7*Y{float} 49r22 53r22 57r22 2|55r46 63r28 67r28 71r28
+25f7*Z{float} 50r22 54r22 58r22 2|55r67 64r28 68r28 72r28
+29R9*Sensor_Record 36e14 39r61 42r35 2|42r35
+30i7*Time_Stamp{19I12} 45r13 2|45r12
+31e7*Sensor_Name{12E9} 47r17 51r20 55r20 2|60r14
+32e7*Platform{9E9}
+33a7*Device_ID{string} 46r32 2|50r35
+34i7*Device_ID_Len{natural} 46r13 2|50r12
+35r7*Data{22R9} 48r17 49r17 50r17 52r17 53r17 54r17 56r17 57r17 58r17 2|55r20
+. 55r41 55r62 62r23 63r23 64r23 66r23 67r23 68r23 70r23 71r23 72r23
+39A9*Sensor_Record_Array(29R9)<integer>
+42V13*Is_Valid_Reading{boolean} 42>31 44r16 2|42b13 76l8 76t24
+42r31 R{29R9} 45r11 46r11 46r30 47r15 48r15 49r15 50r15 51r18 52r15 53r15
+. 54r15 55r18 56r15 57r15 58r15 2|42b31 45r10 50r10 50r33 55r18 55r39 55r60
+. 60r12 62r21 63r21 64r21 66r21 67r21 68r21 70r21 71r21 72r21
+63V13*Detect_Platform{9E9} 63>30 2|8b13 18l8 18t23
+63a30 Platform_String{string} 2|8b30 10r10 11r13 11r30 11r55 13r16 13r33
+. 13r58
+66V13*Detect_Sensor_Type{12E9} 66>33 2|21b13 39l8 39t26
+66a33 Sensor_String{string} 2|21b33 23r10 24r13 24r28 24r51 26r16 26r31 26r54
+. 28r16 28r31 28r54 30r16 30r31 30r54 32r16 32r31 32r54 34r16 34r31 34r54
+71V13 Is_NaN{boolean} 71>21 2|55s10 55s31 55s52
+71f21 Value{float}
+

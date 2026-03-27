@@ -1,0 +1,131 @@
+V "GNAT Lib v14"
+A -gnat2012
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U fusion_engine%b	fusion_engine.adb	b9f56897 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+
+U fusion_engine%s	fusion_engine.ads	7d18165c EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W math_library%s	math_library.adb	math_library.ali
+W sensors%s		sensors.adb		sensors.ali
+
+D ada.ads		20260213223206 76789da1 ada%s
+D a-numeri.ads		20260213223206 84bea7a3 ada.numerics%s
+D a-nuelfu.ads		20260213223206 03e83d1c ada.numerics.elementary_functions%s
+D a-ngelfu.ads		20260213223206 5506716e ada.numerics.generic_elementary_functions%s
+D a-unccon.ads		20260213223206 0e9b276f ada.unchecked_conversion%s
+D fusion_engine.ads	20260327233109 cc55f739 fusion_engine%s
+D fusion_engine.adb	20260327233049 7648a2b2 fusion_engine%b
+D math_library.ads	20260327233053 57f476f8 math_library%s
+D sensors.ads		20260327232807 e551aa81 sensors%s
+D system.ads		20260213223207 14286b0f system%s
+D s-exctab.ads		20260213223207 91bef6ef system.exception_table%s
+D s-stalib.ads		20260213223207 1c9580f6 system.standard_library%s
+G a e
+G c Z s b [initialize_fusion fusion_engine 20 13 none]
+G c Z s b [update_fusion fusion_engine 25 13 none]
+G c Z s b [get_orientation fusion_engine 30 13 none]
+G c Z s b [get_orientation_euler fusion_engine 33 13 none]
+G c Z s b [is_initialized fusion_engine 37 13 none]
+G c Z s b [quaternion_to_euler fusion_engine 42 13 none]
+G c Z s b [update_ag fusion_engine 46 13 none]
+G c Z s b [extract_accelerometer fusion_engine 53 13 none]
+G c Z s b [extract_gyroscope fusion_engine 56 13 none]
+G c Z s s [fusion_stateIP fusion_engine 13 9 none]
+G r c none [update_fusion fusion_engine 25 13 none] [compute_delta_time math_library 96 13 none]
+G r c none [get_orientation_euler fusion_engine 33 13 none] [safe_sqrt math_library 103 13 none]
+G r c none [quaternion_to_euler fusion_engine 42 13 none] [safe_sqrt math_library 103 13 none]
+G r c none [update_ag fusion_engine 46 13 none] [compute_delta_time math_library 96 13 none]
+G r c none [update_ag fusion_engine 46 13 none] [update_madgwick math_library 67 13 none]
+X 1 ada.ads
+16K9*Ada 20e8 6|8r6 7|6r6 97r32 106r31 113r19
+X 2 a-numeri.ads
+16K13*Numerics 35e17 6|8r10 7|6r10 97r36 106r35 113r23
+X 3 a-nuelfu.ads
+18K22*Elementary_Functions[4|39] 6|8w19 7|6w19 97r45 106r44 113r32
+X 4 a-ngelfu.ads
+148V13*Arctan{float} 7|97s66[3|18] 106s65[3|18] 113s53[3|18]
+X 6 fusion_engine.ads
+10K9*Fusion_Engine 42E13 59l5 59e18 7|8b14 158l5 158t18
+13R9*Fusion_State 17e14 20r38 26r18 27r48 30r38 34r15 37r37 47r18 49r48 7|11r38
+. 22r18 23r48 71r38 78r15 85r37 121r18 123r48
+14r7*Current_Quaternion{8|14R9} 7|14m9 30m12 58m18 73r20 81r41 133r45 137m9
+15i7*Last_Timestamp{9|19I12} 7|15m9 31m12 37r80 59m18 125r95 138m9
+16b7*Initialized{boolean} 7|16m9 28r20 32m12 60m18 87r20 139m9
+20V13*Initialize_Fusion{13R9} 7|11b13 18l8 18t25
+25V13*Update_Fusion{13R9} 26>7 27>7 7|21b13 68l8 68t21
+26r7 State{13R9} 7|22b7 28r14 37r74 44r20 49r20 66r20
+27r7 Reading{9|29R9} 7|23b7 31r34 37r54 40r12 59r40
+30V13*Get_Orientation{8|14R9} 30>30 7|71b13 74l8 74t23
+30r30 State{13R9} 7|71b30 73r14
+33V13*Get_Orientation_Euler{8|22R9} 34>7 7|77b13 82l8 82t29
+34r7 State{13R9} 7|78b7 81r35
+37V13*Is_Initialized{boolean} 37>29 7|85b13 88l8 88t22
+37r29 State{13R9} 7|85b29 87r14
+42V13 Quaternion_To_Euler{8|22R9} 43>7 7|81s14 91b13 117l8 117t27
+43r7 Q{8|14R9} 7|92b7 95r44 95r50 95r56 95r62 96r50 96r56 96r62 96r68 100r39
+. 100r45 100r51 100r57 104r44 104r50 104r56 104r62 105r50 105r56 105r62 105r68
+46V13 Update_AG{13R9} 47>7 48>7 49>7 7|120b13 141l8 141t17
+47r7 State{13R9} 7|121b7 125r89 133r39
+48r7 Accel{9|29R9} 7|122b7 125r71 128r55 128r69 128r83 138r31
+49r7 Gyro{9|29R9} 7|123b7 129r55 129r68 129r81
+53V13 Extract_Accelerometer{9|29R9} 54>7 7|144b13 149l8 149t29
+54r7 Reading{9|29R9} 7|145b7 148r14
+56V13 Extract_Gyroscope{9|29R9} 57>7 7|151b13 156l8 156t25
+57r7 Reading{9|29R9} 7|152b7 155r14
+X 7 fusion_engine.adb
+25f7 Delta_Time{float} 37m7
+55r16 New_Q{8|14R9} 58r40
+95f7 Sinr_Cosp{float} 97r74
+96f7 Cosr_Cosp{float} 97r85
+97f7 Roll{float} 116r15
+100f7 Sinp{float} 110r15 111r39 113r61 113r97 113r104
+101f7 Pitch{float} 111m10 113m10 116r21
+104f7 Siny_Cosp{float} 106r73
+105f7 Cosy_Cosp{float} 106r84
+106f7 Yaw{float} 116r28
+125f7 Delta_Time{float} 133r86
+128r7 Accel_Vec{8|22R9} 133r65
+129r7 Gyro_Vec{8|22R9} 133r76
+132r7 New_Q{8|14R9} 137r31
+X 8 math_library.ads
+8K9*Math_Library 6|7w6 14r28 30r59 34r36 43r11 43r43 7|14r31 30r34 37r21
+. 55r24 55r51 71r59 78r36 92r11 92r43 113r67 125r38 128r28 129r28 132r24
+. 133r9 8|111e17
+14R9*Quaternion 6|14r41 30r72 43r24 7|55r37 71r72 92r24 132r37 8|19e14
+15f7*W{float} 7|95r46 100r41 104r46
+16f7*X{float} 7|95r52 96r52 96r58 100r59 104r58
+17f7*Y{float} 7|95r58 96r64 96r70 100r47 104r64 105r52 105r58
+18f7*Z{float} 7|95r64 100r53 104r52 105r64 105r70
+22R9*Vector_3D 6|34r49 43r56 7|78r49 92r56 128r41 129r41 8|26e14
+32r4*Identity_Quaternion{14R9} 7|14r44 30r47 55r64
+67V13*Update_Madgwick{14R9} 7|133s22
+96V13*Compute_Delta_Time{float} 7|37s34 125s51
+103V13*Safe_Sqrt{float} 7|113s80
+X 9 sensors.ads
+6K9*Sensors 6|6w6 15r28 27r18 48r18 49r18 54r17 54r47 57r17 57r47 7|23r18
+. 41r15 46r15 51r15 122r18 123r18 145r17 145r47 152r17 152r47 9|74e12
+12n25*Accelerometer{12E9} 7|41r23
+12n40*Gyroscope{12E9} 7|46r23
+13n25*Orientation{12E9} 7|51r23
+19I12*Timestamp_Nano{long_integer} 6|15r36
+23f7*X{float} 7|128r66 129r65
+24f7*Y{float} 7|128r80 129r78
+25f7*Z{float} 7|128r94 129r91
+29R9*Sensor_Record 6|27r26 48r26 49r26 54r25 54r55 57r25 57r55 7|23r26 122r26
+. 123r26 145r25 145r55 152r25 152r55 9|36e14
+30i7*Time_Stamp{19I12} 7|31r42 37r62 59r48 125r77 138r37
+31e7*Sensor_Name{12E9} 7|40r20
+35r7*Data{22R9} 7|128r61 128r75 128r89 129r60 129r73 129r86
+
