@@ -4,7 +4,7 @@ Here is a comprehensive project plan designed for the implementation AI. It incl
 
 # Sensor Fusion Project Plan (Ada/SPARK)
 
-**To the Implementation AI:** You are tasked with developing a formally verified sensor fusion engine in Ada/SPARK. You will process raw data streamed via HTTP from the Sensor Logger app (iOS and Android), handle unit/coordinate disparities, and perform multi-sensor fusion. Safety, correctness (via SPARK proofs), and modular progression are your top priorities. If you are missing context on how to use a dependency, use the DeepWiki MCP to read the documentation from the repositories listed in `dependencies.md`.
+**To the Implementation AI:** You are tasked with developing a formally verified sensor fusion engine in Ada/SPARK. You will process raw data streamed via HTTP from the Sensor Logger app (iOS and Android), handle unit/coordinate disparities, and perform multi-sensor fusion. Safety, correctness (via SPARK proofs), and modular progression are your top priorities. If you are missing context on how to use a dependency, use the DeepWiki MCP to read the documentation from the repositories listed in `dependencies.md`. When calling compiler or spark proovers, use the threads of this computer (e.g. using option -j0).
 
 ## 0. Dependencies & Environment Setup
 
