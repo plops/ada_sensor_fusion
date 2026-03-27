@@ -21,13 +21,22 @@ package body HTTP_Listener is
    begin
       if Method = "POST" and then URI = "/data" then
          declare
-            Request_Body : Unbounded_String;
-            -- Use the built-in AWS Payload if possible, or chunked:
-            Raw_Payload  : constant String := AWS.Status.Payload (Request);
+            Body_Str : constant String := AWS.Status.Payload (Request);
+            JSON_Val : JSON_Value;
+            Payload  : JSON_Array;
          begin
-            Append (Request_Body, Raw_Payload);
             Put_Line ("Received sensor data: " &
-                      Natural'Image (Length (Request_Body)) & " bytes");
+                      Natural'Image (Body_Str'Length) & " bytes");
+            
+            -- Show actual data content for debugging
+            if Body_Str'Length > 0 then
+               Put_Line ("Data content: " & Body_Str);
+               
+               -- Parse JSON as shown in the plan
+               JSON_Val := Read (Body_Str);
+               Payload := JSON_Val.Get ("payload");
+               Put_Line ("Payload items: " & Natural'Image (Length (Payload)));
+            end if;
 
             return AWS.Response.Build
               (Content_Type => AWS.MIME.Text_HTML,
