@@ -21,9 +21,8 @@ You are a planning AI tasked with designing a comprehensive project for implemen
 
 **Key Requirements**:
 - Use raw sensor data as much as possible
-- Account for coordinate system differences between devices (documented in submodule)
-- Multi-step implementation with compiled, working program at each step
-- SPARK verification for each component
+- Account for coordinate system differences between devices (documented in awesome-sensor-logger submodule)
+- Multi-step implementation with compiled, working program and SPARK verification for each component at each step
 - Focus on correctness through formal methods
 
 ## Available Resources
@@ -32,7 +31,20 @@ I have set up a git repository with the `awesome-sensor-logger` submodule. The c
 
 ## Your Task
 
-Please analyze the provided documentation and create a detailed project plan that addresses:
+Please analyze the provided documentation and create a detailed project plan.
+Assume that the implementation will be performed by an AI with much less intelligence and
+context than you, so each step shall give the required information. If issues arise during
+implementation the implementation AI shall use the DeepWiki MCP to ask questions about
+dependendencies. For this you have to create a dependencies.md file that lists dependencies and their github repositories (consisting of <github-organisation>/<project-name> so that the MCP can find them, because DeepWiki uses the same structure as github).
+
+Some information like the time synchronization, estimation of the device dependent maximu m sampling frequencies or the coordinate system transformations may require us to perform experiments, acquire sample data and its interpretation. Give clear
+instructions how to perform such data acquisition.
+
+The plan shall address:
+
+### 0. Dependencies
+- Install modern versions of Ada compiler and SPARK tools using Alire
+- Create tell the implementation AI where to find the dependencies in the dependencies.md file
 
 ### 1. Data Processing Architecture
 - Design HTTP server to receive 1-second batch data from Sensor Logger
@@ -55,7 +67,7 @@ Please analyze the provided documentation and create a detailed project plan tha
 - **Step 4**: Multi-device fusion (iPhone + Samsung data)
 - **Step 5**: Advanced fusion with GPS/barometer integration
 
-For each step: implement core fusion algorithms, prove correctness with SPARK, validate against derived sensors (gravity, orientation).
+For each step: implement core fusion algorithms, prove correctness with SPARK, validate against derived sensors (gravity, orientation). Format the code using gnatformat (and perform other housekeeping you deem necessary) and commit the changes.
 
 ### 4. Formal Verification Plan
 - Identify safety-critical properties to prove (no overflow, bounded errors, etc.)
@@ -67,7 +79,7 @@ For each step: implement core fusion algorithms, prove correctness with SPARK, v
 - Each step must produce a compiled, working program
 - SPARK verification must pass for each component
 - Validation against derived sensors at each step
-- Performance benchmarks for real-time processing
+- Performance benchmarks for real-time processing (optional)
 
 ## Expected Output
 
