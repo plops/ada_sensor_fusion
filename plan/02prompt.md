@@ -32,19 +32,15 @@ I have set up a git repository with the `awesome-sensor-logger` submodule. The c
 ## Your Task
 
 Please analyze the provided documentation and create a detailed project plan.
-Assume that the implementation will be performed by an AI with much less intelligence and
-context than you, so each step shall give the required information. If issues arise during
-implementation the implementation AI shall use the DeepWiki MCP to ask questions about
-dependendencies. For this you have to create a dependencies.md file that lists dependencies and their github repositories (consisting of <github-organisation>/<project-name> so that the MCP can find them, because DeepWiki uses the same structure as github).
+Assume that the implementation will be performed by an AI with much less intelligence and context than you, so each step shall give the required information. If issues arise during implementation the implementation AI shall use the DeepWiki MCP to ask questions about dependencies. For this you have to create a dependencies.md file that lists dependencies and their github repositories (consisting of <github-organisation>/<project-name> so that the MCP can find them, because DeepWiki uses the same structure as github).
 
-Some information like the time synchronization, estimation of the device dependent maximu m sampling frequencies or the coordinate system transformations may require us to perform experiments, acquire sample data and its interpretation. Give clear
-instructions how to perform such data acquisition.
+Some information like the time synchronization, estimation of the device dependent maximum sampling frequencies or the coordinate system transformations may require us to perform experiments, acquire sample data and its interpretation. Give clear instructions how to perform such data acquisition.
 
 The plan shall address:
 
 ### 0. Dependencies
 - Install modern versions of Ada compiler and SPARK tools using Alire
-- Create tell the implementation AI where to find the dependencies in the dependencies.md file
+- Tell the implementation AI where to find the dependencies in the dependencies.md file
 
 ### 1. Data Processing Architecture
 - Design HTTP server to receive 1-second batch data from Sensor Logger
