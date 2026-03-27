@@ -88,44 +88,67 @@ echo "- MQTT (lightweight messaging)" >> "$PLAN_DIR/collected_docs/protocols_sum
 echo "- WebSockets (real-time web communication)" >> "$PLAN_DIR/collected_docs/protocols_summary.md"
 echo "" >> "$PLAN_DIR/collected_docs/protocols_summary.md"
 
-# Count collected files
-TOTAL_FILES=$(find "$PLAN_DIR/collected_docs" -name "*.md" | wc -l)
-echo "Collection complete. Gathered $TOTAL_FILES documentation files."
+# Create consolidated documentation file for planning AI
+echo "Creating consolidated documentation file..."
+CONSOLIDATED_FILE="$PLAN_DIR/collected_docs/consolidated_documentation.md"
+echo "# Consolidated Sensor Fusion Documentation" > "$CONSOLIDATED_FILE"
+echo "" >> "$CONSOLIDATED_FILE"
+echo "This file contains relevant documentation from the awesome-sensor-logger submodule for planning the sensor fusion project." >> "$CONSOLIDATED_FILE"
+echo "" >> "$CONSOLIDATED_FILE"
 
-# Create a quick reference for the planning AI
-cat > "$PLAN_DIR/collected_docs/project_context.md" << EOF
-# Sensor Fusion Learning Project Context
+# Function to append file with header
+append_file() {
+    local file="$1"
+    local relative_path="${file#$SUBMODULE_DIR/}"
+    echo "## File: $relative_path" >> "$CONSOLIDATED_FILE"
+    echo "" >> "$CONSOLIDATED_FILE"
+    cat "$file" >> "$CONSOLIDATED_FILE"
+    echo "" >> "$CONSOLIDATED_FILE"
+    echo "---" >> "$CONSOLIDATED_FILE"
+    echo "" >> "$CONSOLIDATED_FILE"
+}
 
-## Goal
-Implement sensor fusion algorithms in Ada/SPARK using data from multiple mobile devices.
+# Most relevant: Sensor Logger app documentation (since you decided to use it)
+echo "Adding Sensor Logger documentation..."
+find "$SUBMODULE_DIR" -name "*.md" -exec grep -l -i "sensor.*logger\|tszheichoi" {} \; | sort | while read file; do
+    echo "Processing: $file"
+    append_file "$file"
+done
 
-## Available Devices
-- iPhone 11 (iOS)
-- Samsung S10e (Android)
-- Samsung A54 (Android) 
-- Xiaomi Mi4C (Android)
-- Realme C11 2021 (Android)
+# Coordinate system documentation (important for device differences)
+echo "Adding coordinate system documentation..."
+find "$SUBMODULE_DIR" -name "*.md" -exec grep -l -i "coordinate\|axis\|orientation\|quaternion" {} \; | sort | while read file; do
+    echo "Processing: $file"
+    append_file "$file"
+done
 
-## Target Architecture
-- Mobile devices stream sensor data (accelerometer, gyroscope, magnetometer) over network
-- Ada/SPARK program receives and processes data streams
-- Implement sensor fusion algorithms (Kalman filters, complementary filters, etc.)
-- Multi-device synchronization and data fusion
+# iOS sensor documentation
+echo "Adding iOS sensor documentation..."
+find "$SUBMODULE_DIR" -name "*.md" -exec grep -l -i "ios\|iphone\|apple.*sensor" {} \; | sort | while read file; do
+    echo "Processing: $file"
+    append_file "$file"
+done
 
-## Key Requirements
-- Cross-platform sensor data collection
-- Network protocols for real-time data streaming
-- Ada/SPARK implementation with formal verification capabilities
-- Timestamp synchronization across devices
-- Real-time processing capabilities
+# Android sensor documentation  
+echo "Adding Android sensor documentation..."
+find "$SUBMODULE_DIR" -name "*.md" -exec grep -l -i "android.*sensor\|samsung.*sensor" {} \; | sort | while read file; do
+    echo "Processing: $file"
+    append_file "$file"
+done
 
-## Next Steps for Planning AI
-1. Analyze available sensor streaming apps for each platform
-2. Recommend optimal data collection strategy
-3. Design Ada/SPARK architecture for sensor fusion
-4. Plan implementation phases and milestones
-EOF
+# HTTP streaming and protocol documentation
+echo "Adding HTTP streaming documentation..."
+find "$SUBMODULE_DIR" -name "*.md" -exec grep -l -i "http.*stream\|http.*post\|network.*sensor" {} \; | sort | while read file; do
+    echo "Processing: $file"
+    append_file "$file"
+done
 
-echo "Documentation collection completed successfully!"
-echo "Files are ready in: $PLAN_DIR/collected_docs/"
-echo "Provide this directory to your planning AI for project analysis."
+# General sensor fusion and processing documentation
+echo "Adding sensor fusion documentation..."
+find "$SUBMODULE_DIR" -name "*.md" -exec grep -l -i "sensor.*fusion\|kalman\|filter\|accelerometer.*gyroscope.*magnetometer" {} \; | sort | while read file; do
+    echo "Processing: $file"
+    append_file "$file"
+done
+
+echo "Consolidated documentation created: $CONSOLIDATED_FILE"
+echo "File size: $(wc -l < "$CONSOLIDATED_FILE") lines"
