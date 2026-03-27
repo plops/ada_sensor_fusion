@@ -1,0 +1,3 @@
+[submodule "awesome-sensor-logger"]
+	path = awesome-sensor-logger
+	url = https://github.com/tszheichoi/awesome-sensor-logger
