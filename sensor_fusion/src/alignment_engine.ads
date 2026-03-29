@@ -14,7 +14,7 @@ package Alignment_Engine is
      (V1, V2 : Float; 
       T1, T2, Target_T : Long_Integer) return Float
      with 
-       Pre  => T2 > T1 and then Target_T >= T1 and then Target_T <= T2,
+       Pre  => (T2 > T1) and then (Target_T >= T1) and then (Target_T <= T2),
        Post => (if Target_T = T1 then Interpolate_Float'Result = V1
                 elsif Target_T = T2 then Interpolate_Float'Result = V2);
 
@@ -23,7 +23,7 @@ package Alignment_Engine is
      (V1, V2 : Math_Library.Vector_3D;
       T1, T2, Target_T : Long_Integer) return Math_Library.Vector_3D
      with 
-       Pre  => T2 > T1 and then Target_T >= T1 and then Target_T <= T2,
+       Pre  => (T2 > T1) and then (Target_T >= T1) and then (Target_T <= T2),
        Post => 
          (if Target_T = T1 then Interpolate_Vector'Result = V1
           elsif Target_T = T2 then Interpolate_Vector'Result = V2);
@@ -33,8 +33,8 @@ package Alignment_Engine is
      (Q1, Q2 : Math_Library.Quaternion;
       T1, T2, Target_T : Long_Integer) return Math_Library.Quaternion
      with 
-       Pre  => T2 > T1 and then Target_T >= T1 and then Target_T <= T2 and then
-             Math_Library.Magnitude_Squared (Q1) > Math_Library.Epsilon and
+       Pre  => (T2 > T1) and then (Target_T >= T1) and then (Target_T <= T2) and then
+             Math_Library.Magnitude_Squared (Q1) > Math_Library.Epsilon and then
              Math_Library.Magnitude_Squared (Q2) > Math_Library.Epsilon,
        Post => Math_Library.Magnitude_Squared (Interpolate_Quaternion'Result) > Math_Library.Epsilon;
 
@@ -105,8 +105,8 @@ package Alignment_Engine is
      (Q1, Q2 : Math_Library.Quaternion;
       T    : Float) return Math_Library.Quaternion
      with 
-       Pre => T in 0.0 .. 1.0 and then
-             Math_Library.Magnitude_Squared (Q1) > Math_Library.Epsilon and
+       Pre => (T in 0.0 .. 1.0) and then
+             Math_Library.Magnitude_Squared (Q1) > Math_Library.Epsilon and then
              Math_Library.Magnitude_Squared (Q2) > Math_Library.Epsilon,
        Post => Math_Library.Magnitude_Squared (Safe_SLERP'Result) > Math_Library.Epsilon;
 
