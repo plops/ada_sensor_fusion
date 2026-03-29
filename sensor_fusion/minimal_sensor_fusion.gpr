@@ -1,0 +1,20 @@
+-- Minimal sensor fusion project without AWS conflicts
+-- Focus on core SPARK functionality first
+
+project Minimal_Sensor_Fusion is
+
+   for Source_Dirs use ("src/");
+   for Object_Dir use "obj/minimal";
+   for Exec_Dir use "bin";
+   for Main use ("sensor_fusion_minimal.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use 
+        ("-gnat2020", "-Wall", "-g");
+   end Compiler;
+
+   package Builder is
+      for Switches ("Ada") use ("-j0");
+   end Builder;
+
+end Minimal_Sensor_Fusion;

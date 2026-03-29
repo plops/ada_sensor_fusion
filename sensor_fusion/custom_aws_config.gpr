@@ -1,0 +1,19 @@
+-- Custom AWS configuration that avoids shared.gpr conflicts
+
+project Custom_AWS_Config is
+   for Source_Dirs use ();
+   
+   -- Direct path to AWS libraries, avoiding shared.gpr
+   for Library_Dir use "/home/kiel/.local/share/alire/releases/aws_25.2.0_bb26af84/install/lib";
+   for Object_Dir use "obj/aws";
+   
+   package Compiler is
+      for Default_Switches ("Ada") use 
+        ("-gnat2020", "-gnatwa", "-Wall", "-g");
+   end Compiler;
+
+   package Builder is
+      for Switches ("Ada") use ("-j0");
+   end Builder;
+
+end Custom_AWS_Config;

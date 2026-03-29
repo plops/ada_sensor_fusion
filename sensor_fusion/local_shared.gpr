@@ -1,0 +1,25 @@
+-- Local shared configuration to avoid AWS conflict
+-- This replaces the problematic AWS shared.gpr
+
+abstract project Local_Shared is
+
+   type Build_Type is ("Debug", "Release");
+   Build : Build_Type := external ("PRJ_BUILD", "Debug");
+
+   type Library_Kind is ("relocatable", "static", "static-pic");
+   Library_Type : Library_Kind := external ("LIBRARY_TYPE", "static");
+
+   for Object_Dir use "obj/" & Build;
+   for Exec_Dir use "bin";
+   for Library_Dir use "lib";
+
+   package Compiler is
+      for Default_Switches ("Ada") use 
+        ("-gnat2020", "-gnatwa", "-Wall", "-g");
+   end Compiler;
+
+   package Builder is
+      for Switches ("Ada") use ("-j0");
+   end Builder;
+
+end Local_Shared;
