@@ -2,9 +2,7 @@
 -- Step 1: Basic Data Reception and Validation
 
 with Ada.Text_IO;
-with Ada.Text_IO.Unbounded;
-with HTTP_Listener;
-with Sensors;
+with Working_HTTP_Server;
 with GNAT.Sockets;
 with Ada.Exceptions;
 with GNAT.OS_Lib;
@@ -13,10 +11,11 @@ procedure Sensor_Fusion is
 begin
    Ada.Text_IO.Put_Line ("Sensor Fusion Engine Starting...");
    Ada.Text_IO.Put_Line ("Step 1: Basic Data Reception and Validation");
+   Ada.Text_IO.Put_Line ("Using minimal HTTP server (no AWS dependencies)");
 
    -- Start the HTTP server to receive sensor data
    begin
-      HTTP_Listener.Start_Server (Port => 8080);
+      Working_HTTP_Server.Start_Server (Port => 8080);
    exception
       when E : others =>
          Ada.Text_IO.Put_Line ("ERROR: Failed to start server on port 8080");
@@ -24,10 +23,11 @@ begin
          
          -- Check for port conflicts
          declare
-            Sock_Addr : Sock_Addr_Type;
+            use GNAT.Sockets;
+            Server_Addr : Sock_Addr_Type;
             Is_Connected : Boolean;
          begin
-            Sock_Addr := (Family => Family_Inet,
+            Server_Addr := (Family => Family_Inet,
                            Addr  => Inet_Addr ("127.0.0.1"),
                            Port => 8080);
             
@@ -36,7 +36,7 @@ begin
                Test_Socket : Socket_Type;
             begin
                Create_Socket (Test_Socket, Family_Inet, Socket_Stream);
-               Connect_Socket (Test_Socket, Sock_Addr);
+               Connect_Socket (Test_Socket, Server_Addr);
                Is_Connected := True;
                Close_Socket (Test_Socket);
             exception
@@ -54,7 +54,9 @@ begin
                   Result   : Integer;
                begin
                   Ada.Text_IO.Put_Line ("INFO: Checking for processes using port 8080...");
-                  Result := GNAT.OS_Lib.Spawn (Command_String => Command);
+                  Result := GNAT.OS_Lib.Spawn (Program_Name => "/bin/sh", 
+                                           Args => (1 => new String'("-c"), 
+                                                   2 => new String'(Command)));
                   Ada.Text_IO.Put_Line ("INFO: Please stop any conflicting processes and try again");
                end;
             else
@@ -72,6 +74,6 @@ begin
 
 exception
    when others =>
-      HTTP_Listener.Stop_Server;
+      Working_HTTP_Server.Stop_Server;
       Ada.Text_IO.Put_Line ("Server stopped");
 end Sensor_Fusion;
