@@ -23,15 +23,20 @@ package body Sensors is
       if Sensor_String'Length >= 4 then
          if Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "accel" then
             return Accelerometer;
-         elsif Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "gyro" then
+         elsif Sensor_String'Length >= 5 and then 
+               Sensor_String (Sensor_String'First .. Sensor_String'First + 4) = "gyro" then
             return Gyroscope;
-         elsif Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "magn" then
+         elsif Sensor_String'Length >= 5 and then 
+               Sensor_String (Sensor_String'First .. Sensor_String'First + 4) = "magn" then
             return Magnetometer;
-         elsif Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "orie" then
+         elsif Sensor_String'Length >= 4 and then 
+               Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "orie" then
             return Orientation;
-         elsif Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "loca" then
+         elsif Sensor_String'Length >= 4 and then 
+               Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "loca" then
             return Location;
-         elsif Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "baro" then
+         elsif Sensor_String'Length >= 4 and then 
+               Sensor_String (Sensor_String'First .. Sensor_String'First + 3) = "baro" then
             return Barometer;
          end if;
       end if;

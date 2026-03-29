@@ -25,6 +25,10 @@ private
       Records     : out Sensors.Sensor_Record_Array;
       Count       : out Natural);
 
+   procedure Write_Sensor_Data_To_File
+     (Records : Sensors.Sensor_Record_Array;
+      Count   : Natural);
+
    protected type Sensor_Buffer is
       entry Add_Reading (Reading : Sensors.Sensor_Record);
       entry Get_Readings (Records : out Sensors.Sensor_Record_Array;
