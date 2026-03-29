@@ -1,0 +1,3 @@
+timestamp_ns,platform,device_id,sensor_type,x,y,z
+1640995200000000000,iOS,iPhone11,accelerometer,0.1,0.2,9.8
+1640995200100000000,Android,SamsungS10e,accelerometer,0.15,0.25,9.81
