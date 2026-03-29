@@ -1,0 +1,16 @@
+project Quick_Phone_Test is
+
+   for Source_Dirs use ("src");
+   for Main use ("quick_phone_test.adb");
+   for Exec_Dir use "bin";
+   for Object_Dir use "obj";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-gnat2022", "-Wall", "-O2");
+   end Compiler;
+
+   package Binder is
+      for Default_Switches ("Ada") use ("-Es");
+   end Binder;
+
+end Quick_Phone_Test;
