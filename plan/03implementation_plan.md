@@ -60,30 +60,39 @@ end Sensors;
 
 You must complete, format (`gnatformat`), compile, and prove each step before moving to the next.
 
-### Step 1: Basic Data Reception and Validation (Ada + SPARK bounds) ✅ **COMPLETED** / *Reference*
+### Step 1: Basic Data Reception and Validation (Ada + SPARK bounds) ✅ **COMPLETED**
 * **Goal:** Receive JSON, parse it, and securely pass it to SPARK structs.
-* **Prototype Code (Ada Impure AWS Callback):**
+* **Implementation:** Minimal HTTP server using only standard Ada libraries (no AWS dependencies)
+* **Prototype Code (Minimal HTTP Server):**
   ```ada
-  with AWS.Response;
-  with AWS.Status;
-  with GNATCOLL.JSON; use GNATCOLL.JSON;
+  with GNAT.Sockets;
+  with Ada.Text_IO;
   
-  function HTTP_Handler (Request : in AWS.Status.Data) return AWS.Response.Data is
-     URI : constant String := AWS.Status.URI (Request);
+  procedure Working_HTTP_Server is
+     Server_Socket : GNAT.Sockets.Socket_Type;
+     Client_Socket : GNAT.Sockets.Socket_Type;
+     
+     procedure Handle_Connection (Socket : in out GNAT.Sockets.Socket_Type) is
+        Buffer : Ada.Streams.Stream_Element_Array (1 .. 8192);
+        Last : Ada.Streams.Stream_Element_Offset;
+     begin
+        -- Read HTTP request and extract JSON sensor data
+        GNAT.Sockets.Receive_Socket (Socket, Buffer, Last);
+        -- Process JSON payload and save to file
+     end Handle_Connection;
   begin
-     if URI = "/data" and then AWS.Status.Method (Request) = AWS.Status.POST then
-        declare
-           Body_Str : constant String := AWS.Status.Message_Body (Request);
-           JSON_Val : constant JSON_Value := Read (Body_Str);
-           Payload  : constant JSON_Array := JSON_Val.Get ("payload");
-        begin
-           -- Loop through payload, convert to Sensors.Sensor_Record, 
-           -- and push to a thread-safe queue for SPARK layer.
-           return AWS.Response.Build ("text/plain", "success");
-        end;
-     end if;
-     return AWS.Response.Build (AWS.Messages.S404, "Not Found");
-  end HTTP_Handler;
+     -- Server setup and main loop
+     GNAT.Sockets.Create_Socket (Server_Socket);
+     GNAT.Sockets.Bind_Socket (Server_Socket, Server_Addr);
+     GNAT.Sockets.Listen_Socket (Server_Socket);
+     
+     -- Accept connections and handle sensor data
+     loop
+        GNAT.Sockets.Accept_Socket (Server_Socket, Client_Socket, Client_Addr);
+        Handle_Connection (Client_Socket);
+        GNAT.Sockets.Close_Socket (Client_Socket);
+     end loop;
+  end Working_HTTP_Server;
   ```
 
 ### Step 2: Single-Device Sensor Fusion ✅ **COMPLETED**
@@ -189,4 +198,4 @@ Sensor Logger pushes batches roughly every 200ms. To maintain a real-time buffer
      Count : Natural := 0;
   end record;
   ```
-* **Concurrency:** The AWS HTTP receiver must run on a separate task from the SPARK Fusion engine, communicating via a protected object (queue), ensuring the HTTP receiver never blocks.
+* **Concurrency:** The minimal HTTP receiver must run on a separate task from the SPARK Fusion engine, communicating via a protected object (queue), ensuring the HTTP receiver never blocks.
