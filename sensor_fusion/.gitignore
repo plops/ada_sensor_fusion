@@ -1,9 +1,32 @@
+# Build directories
 /obj/
 /bin/
 /alire/
 /config/
-*~
-*.csv
+
+# Ada build artifacts
 *.ali
-*.obj
 *.o
+*.obj
+
+# GNAT build files
+b~*.adb
+b~*.ads
+*.gpr~
+*.gpr.bak
+
+# Temporary files
+*~
+*.tmp
+*.bak
+
+# Data files (captured phone data)
+*.csv
+*.json
+
+# Executables
+process_phone_data
+simple_phone_processor
+working_phone_processor
+*_processor
+*_server
