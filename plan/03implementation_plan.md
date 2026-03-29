@@ -4,7 +4,8 @@
 
 ## 0. Dependencies & Environment Setup ✅ **COMPLETED**
 
-You will use Alire (Ada LIbrary REpository) to manage dependencies and build the project. 
+You will use Alire (Ada LIbrary REpository) to manage dependencies and build the project. In order to prevent costly rebuilds it is important
+to start with simple programs that definitely compile.
 
 **Instructions for Implementation AI:**
 1. ✅ Create a file named `dependencies.md` in the project root...
