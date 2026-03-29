@@ -1,0 +1,20 @@
+-- Simple HTTP Server Project
+-- Basic Ada server without complex dependencies
+
+project Simple_HTTP_Server is
+
+   for Source_Dirs use ("src/");
+   for Object_Dir use "obj/http";
+   for Exec_Dir use "bin";
+   for Main use ("simple_http_server.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use 
+        ("-gnat2020", "-Wall", "-g");
+   end Compiler;
+
+   package Builder is
+      for Switches ("Ada") use ("-j0");
+   end Builder;
+
+end Simple_HTTP_Server;
